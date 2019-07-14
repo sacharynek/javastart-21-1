@@ -11,8 +11,16 @@ public class Product {
         this.price = price;
     }
 
+    public Double getPrice() {
+        return price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
     @Override
     public String toString() {
-        return "Name='" + name +", category='" + category + ", price=" + price +"\n\t";
+        return "<br><h3>Name :'" + name +", category='" + category + ", price=" + price +"</h3>";
     }
 }

@@ -23,16 +23,19 @@ public class ProductController {
 
     @ResponseBody
     @GetMapping("/products")
-    public String products(@RequestParam(defaultValue = "All", required = false) String category) {
+    public String products(@RequestParam String category) {
         List<Product> products;
+        Double price;
 
         if (category.equals("All")) {
             products = productRepository.getProductList();
+            price = productRepository.getTotalPrice();
         } else {
             products = productRepository.search(category);
+            price = productRepository.getCategorylPrice(category);
         }
 
-        return products.toString();
+        return products.toString() + "<h2> Total Price = " + price + "</h2>";
     }
 
     @RequestMapping("/add")
