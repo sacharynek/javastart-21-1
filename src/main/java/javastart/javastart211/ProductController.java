@@ -13,7 +13,7 @@ public class ProductController {
 
     private ProductRepository productRepository;
 
-    public ProductRepository getProductRepository() {
+    private ProductRepository getProductRepository() {
         return productRepository;
     }
 
@@ -39,9 +39,9 @@ public class ProductController {
     }
 
     @RequestMapping("/add")
-    public String addProduct(@RequestParam(defaultValue = "nieznany", required = false) String name
-            , @RequestParam String category
-            , @RequestParam double price) {
+    public String addProduct(@RequestParam(defaultValue = "nieznany", required = true) String name
+            , @RequestParam(required = true) String category
+            , @RequestParam(required = true) double price) {
 
         getProductRepository().addProduct(new Product(name, category, price));
         return "redirect:/index.html";

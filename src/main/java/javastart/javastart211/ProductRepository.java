@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public class ProductRepository {
 
-    List<Product> productList = new ArrayList<>();
+    private List<Product> productList = new ArrayList<>();
 
     public ProductRepository() {
         addProduct(new Product("Proszek", "AGD", 19.99));
@@ -16,22 +16,19 @@ public class ProductRepository {
         addProduct(new Product("Płyta Cd", "Other", 3.99));
     }
 
-    public List<Product> getProductList() {
+    List<Product> getProductList() {
         return productList;
     }
 
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
-    }
 
-    public void addProduct(Product product) {
+    void addProduct(Product product) {
         this.getProductList().add(product);
     }
 
-    public List<Product> search(String category) {
+    List<Product> search(String category) {
         List<Product> output = new ArrayList<>();
         for (Product product : getProductList()) {
-            if (product.category.equals(category)) {
+            if (product.getCategory().equals(category)) {
                 output.add(product);
             }
         }
